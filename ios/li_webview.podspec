@@ -4,14 +4,14 @@
 Pod::Spec.new do |s|
   s.name             = 'li_webview'
   s.version          = '0.0.1'
-  s.summary          = 'A new flutter plugin project.'
-  s.description      = 'A new flutter plugin project.'
+  s.summary          = 'Yet another web view plugin'
+  s.description      = 'Yet another web view plugin'
   s.homepage         = 'http://luckyintelliegence.com'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Lucky Intelligence' => 'developer@luckyintelligence.com' }
   s.source           = { :path => '.' }
-  s.source_files = 'Classes/**/*'
-  s.public_header_files = 'Classes/**/*.h'
+  s.source_files = 'Classes/*'
+  s.public_header_files = 'Classes/*.h'
   s.dependency 'Flutter'
 
   s.ios.deployment_target = '8.0'

@@ -1,8 +1,9 @@
 name: li_webview
-description: A new flutter plugin project.
+description: Yet another web view plugin
 version: 0.0.1
-author:
-homepage:
+author: Lucky Intelligence S.A.P.I. de C.V. <developer@luckyintelligence.com>
+homepage: http://luckyintelligence.com
+repository: https://github.com/lucky-intelligence/li_webview
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -18,5 +19,3 @@ flutter:
   plugin:
     androidPackage: com.luckyintelligence.li_webview
     pluginClass: LiWebviewPlugin
-
-

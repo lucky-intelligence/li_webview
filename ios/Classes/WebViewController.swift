@@ -34,7 +34,7 @@ public class WebViewController: NSObject, FlutterPlatformView, FlutterStreamHand
 
         if let initWebView =  self.initWebView(frame: frame, args) {
             FlutterEventChannel.init(name: String(format: CHANNEL, viewId),
-                                     binaryMessenger: binaryMessenger).setStreamHandler(self)
+                                    binaryMessenger: binaryMessenger).setStreamHandler(self)
 
             self.LiWebView = initWebView
             let channelName = String(format: CHANNEL_NAME, viewId)
