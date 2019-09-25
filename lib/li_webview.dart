@@ -72,8 +72,7 @@ class WebController {
   }
 
   Future<dynamic> evaluateJavascript(String javascriptString) async {
-    final result =
-    await _channel.invokeMethod('evaluateJavascript', javascriptString);
+    final result = await _channel.invokeMethod('evaluateJavascript', javascriptString);
     return result;
   }
 

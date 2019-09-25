@@ -40,6 +40,12 @@ public class FlutterWeb : PlatformView, MethodCallHandler {
                 val url : String = call.arguments.toString()
                 webView.loadUrl(url)
             }
+            "evaluateJavascript" -> {
+                var js : String = call.arguments.toString()
+                webView.evaluateJavascript(js, { e ->
+                    println(e)
+                })
+            }
             else -> result.notImplemented()
         }
     }
