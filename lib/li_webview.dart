@@ -70,6 +70,13 @@ class WebController {
     assert(url != null);
     return _channel.invokeMethod('loadUrl', url);
   }
+
+  Future<dynamic> evaluateJavascript(String javascriptString) async {
+    final result =
+    await _channel.invokeMethod('evaluateJavascript', javascriptString);
+    return result;
+  }
+
 }
 
 class _InitialParams {

@@ -1,4 +1,4 @@
-//
+    //
 //  SwiftLiWebviewPlugin.swift
 //  li_webview
 //
@@ -80,8 +80,11 @@ public class WebViewController: NSObject, FlutterPlatformView, FlutterStreamHand
 
     func onMethodCall(call: FlutterMethodCall, result: @escaping FlutterResult) {
         if let method = FlutterMethodName(rawValue: call.method) {
-            if(method == .loadUrl) {
+            switch method {
+            case .loadUrl:
                 onLoadURL(call, result)
+            case .evaluateJavascript:
+                onEvaluateJavascript(call, result)
             }
         }
     }
@@ -102,6 +105,19 @@ public class WebViewController: NSObject, FlutterPlatformView, FlutterStreamHand
             return true
         }
         return false
+    }
+
+    func onEvaluateJavascript(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
+        if let jsString = call.arguments as? String  {
+            LiWebView.evaluateJavaScript(jsString) { (evaluateResult, error) in
+                if error != nil {
+                    result(FlutterError(code: "failed_evaluatejs", message: "Failed evaluating JavaScript Code.", details: "Your [js code] was: \(jsString)"))
+
+                }else if let res =  evaluateResult as? String {
+                    result(res)
+                }
+            }
+        }
     }
 
     public func onListen(withArguments arguments: Any?, eventSink events: @escaping FlutterEventSink) -> FlutterError? {

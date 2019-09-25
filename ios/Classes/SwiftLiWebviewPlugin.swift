@@ -7,4 +7,5 @@
 
 enum FlutterMethodName: String {
     case loadUrl
+    case evaluateJavascript
 }
