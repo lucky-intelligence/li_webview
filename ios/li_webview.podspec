@@ -15,7 +15,7 @@ A new flutter plugin project.
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
   s.dependency 'Flutter'
-
+  s.exclude_files = "Constrictor/Constrictor/*.plist"
   s.ios.deployment_target = '8.0'
   s.static_framework = true
   s.swift_version = '4.0'
