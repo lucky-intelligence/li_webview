@@ -3,21 +3,26 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'li_webview'
-  s.version          = '0.0.1'
-  s.summary          = 'A new flutter plugin project.'
+  s.version          = '0.0.2'
+  s.summary          = 'Yet another web view plugin'
   s.description      = <<-DESC
-A new flutter plugin project.
-                       DESC
-  s.homepage         = 'http://example.com'
+                          Yet another web view plugin
+                        DESC
+  s.homepage         = 'http://luckyintelliegence.com'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Your Company' => 'email@example.com' }
-  s.source           = { :path => '.' }
+  s.author           = { 'Lucky Intelligence' => 'developer@luckyintelligence.com' }
+  s.source           = { :git => 'https://github.com/lucky-intelligence/li_webview.git', :branch => 'master' }
+  s.dependency 'Flutter'
+  s.swift_version = '4.0'
+  s.static_framework = true
+
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
-  s.dependency 'Flutter'
   s.exclude_files = "Constrictor/Constrictor/*.plist"
-  s.ios.deployment_target = '8.0'
-  s.static_framework = true
-  s.swift_version = '4.0'
+
+  spec.platform = :ios
+  spec.framework      = 'SystemConfiguration'
+  spec.ios.deployment_target  = '8.0'
+  spec.ios.framework  = 'UIKit'
 end
 
