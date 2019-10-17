@@ -6,7 +6,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface WebViewController : NSObject <FlutterPlatformView>
 
 - (instancetype)initWithWithFrame:(CGRect)frame
-                   viewIdentifier:(int64_t)viewId
+                  viewIdentifier:(int64_t)viewId
                         arguments:(id _Nullable)args
                   binaryMessenger:(NSObject<FlutterBinaryMessenger>*)messenger;
 
