@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -72,8 +71,7 @@ class WebController {
   }
 
   Future<dynamic> evaluateJavascript(String javascriptString) async {
-    final result =
-    await _channel.invokeMethod('evaluateJavascript', javascriptString);
+    final result = await _channel.invokeMethod('evaluateJavascript', javascriptString);
     return result;
   }
 
