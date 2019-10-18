@@ -4,11 +4,5 @@
 .packages
 .pub/
 
-.idea/
-.idea/workspace.xml
-
 build/
-
-android/.settings/org.eclipse.buildship.core.prefs
-example/android/app/.settings/org.eclipse.jdt.core.prefs
-example/android/.settings/org.eclipse.buildship.core.prefs
+.vscode/

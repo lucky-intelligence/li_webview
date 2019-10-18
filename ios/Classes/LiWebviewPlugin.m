@@ -1,16 +1,12 @@
-//
-//  SwiftLiWebviewPlugin.swift
-//  li_webview
-//
-//  Created by Cristian Gaviria on 21/09/19.
-//
-
 #import "LiWebviewPlugin.h"
-#import <li_webview/li_webview-Swift.h>
+#import "FlutterWebView.h"
 
 @implementation LiWebviewPlugin
-+ (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
 
-    [registrar registerViewFactory: [[WebViewFactory alloc] initWithMessenger:[registrar messenger]] withId:@"li_webview"];
++ (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
+  WebViewFactory* webviewFactory =
+      [[WebViewFactory alloc] initWithMessenger:registrar.messenger];
+  [registrar registerViewFactory:webviewFactory withId:@"li_webview"];
 }
+
 @end

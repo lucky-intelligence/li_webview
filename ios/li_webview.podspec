@@ -24,5 +24,6 @@ Pod::Spec.new do |s|
   spec.framework      = 'SystemConfiguration'
   spec.ios.deployment_target  = '8.0'
   spec.ios.framework  = 'UIKit'
+  spec.ios.framework  = 'WebKit'
 end
 
