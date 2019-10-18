@@ -49,10 +49,12 @@ packages:
   li_webview:
     dependency: "direct dev"
     description:
-      path: ".."
-      relative: true
-    source: path
-    version: "0.0.2"
+      path: "."
+      ref: master
+      resolved-ref: "665d9a6ee4309b5573e52fdf5872d405b52a741a"
+      url: "https://github.com/lucky-intelligence/li_webview.git"
+    source: git
+    version: "0.0.1"
   matcher:
     dependency: transitive
     description:
