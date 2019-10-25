@@ -17,11 +17,11 @@
 }
 
 - (NSObject<FlutterPlatformView>*)createWithFrame:(CGRect)frame
-                                   viewIdentifier:(int64_t)viewId
+                                  viewIdentifier:(int64_t)viewId
                                         arguments:(id _Nullable)args {
   WebViewController* webviewController =
       [[WebViewController alloc] initWithWithFrame:frame
-                                       viewIdentifier:viewId
+                                      viewIdentifier:viewId
                                             arguments:args
                                       binaryMessenger:_messenger];
   return webviewController;
@@ -36,7 +36,7 @@
 }
 
 - (instancetype)initWithWithFrame:(CGRect)frame
-                   viewIdentifier:(int64_t)viewId
+                  viewIdentifier:(int64_t)viewId
                         arguments:(id _Nullable)args
                   binaryMessenger:(NSObject<FlutterBinaryMessenger>*)messenger {
   if ([super init]) {
@@ -75,8 +75,8 @@
   NSString* url = [call arguments];
   if (![self loadUrl:url]) {
     result([FlutterError errorWithCode:@"loadUrl_failed"
-                               message:@"Failed parsing the URL"
-                               details:[NSString stringWithFormat:@"URL was: '%@'", url]]);
+                              message:@"Failed parsing the URL"
+                              details:[NSString stringWithFormat:@"URL was: '%@'", url]]);
   } else {
     result(nil);
   }
@@ -97,15 +97,15 @@
     NSString* data = [call arguments];
     if (![self loadData:data]) {
         result([FlutterError errorWithCode:@"loadData_failed"
-                                   message:@"Failed parsing the data"
-                                   details:[NSString stringWithFormat:@"data was: '%@'", data]]);
+                                  message:@"Failed parsing the data"
+                                  details:[NSString stringWithFormat:@"data was: '%@'", data]]);
     } else {
         result(nil);
     }
 }
 
 - (bool)loadData:(NSString*)data {
-   
+
     [_liwebView loadHTMLString:data baseURL:nil];
     return true;
 }
