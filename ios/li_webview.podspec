@@ -13,17 +13,16 @@ Pod::Spec.new do |s|
   s.author           = { 'Lucky Intelligence' => 'developer@luckyintelligence.com' }
   s.source           = { :git => 'https://github.com/lucky-intelligence/li_webview.git', :branch => 'master' }
 
-  s.swift_version = '4.0'
+  s.swift_version    = '4.0'
   s.static_framework = true
 
-  s.source_files = 'Classes/**/*'
+  s.source_files     = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
-  s.exclude_files = "Constrictor/Constrictor/*.plist"
+  s.exclude_files    = "Constrictor/Constrictor/*.plist"
 
-  s.platform = :ios
-  s.ios.deployment_target  = '8.0'
+  s.platform       = :ios,'8.0'
   s.framework      = 'SystemConfiguration'
-  s.ios.framework  = 'UIKit'
+  s.ios.frameworks = 'Foundation', 'UIKit', 'WebKit'
 
   s.dependency 'Flutter'
 end
