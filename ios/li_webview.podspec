@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Lucky Intelligence' => 'developer@luckyintelligence.com' }
   s.source           = { :git => 'https://github.com/lucky-intelligence/li_webview.git', :branch => 'master' }
-  s.dependency 'Flutter'
+
   s.swift_version = '4.0'
   s.static_framework = true
 
@@ -20,10 +20,11 @@ Pod::Spec.new do |s|
   s.public_header_files = 'Classes/**/*.h'
   s.exclude_files = "Constrictor/Constrictor/*.plist"
 
-  spec.platform = :ios
-  spec.framework      = 'SystemConfiguration'
-  spec.ios.deployment_target  = '8.0'
-  spec.ios.framework  = 'UIKit'
-  spec.ios.framework  = 'WebKit'
+  s.platform = :ios
+  s.ios.deployment_target  = '8.0'
+  s.framework      = 'SystemConfiguration'
+  s.ios.framework  = 'UIKit'
+
+  s.dependency 'Flutter'
 end
 
