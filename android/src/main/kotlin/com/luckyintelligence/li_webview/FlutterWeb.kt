@@ -42,8 +42,10 @@ public class FlutterWeb : PlatformView, MethodCallHandler {
             }
             "evaluateJavascript" -> {
                 var js : String = call.arguments.toString()
+                println("Execute: "+js);
                 webView.evaluateJavascript(js, { e ->
                     println(e)
+                    result.success(e);
                 })
             }
             "clearDiskCache" -> {
