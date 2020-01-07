@@ -75,6 +75,14 @@ class WebController {
     return result;
   }
 
+  Future<void> clearDiskCache() async {
+    return _channel.invokeMethod('clearDiskCache');
+  }
+
+  Future<void> clearRamCache() async {
+    return _channel.invokeMethod('clearRamCache');
+  }
+
 }
 
 class _InitialParams {

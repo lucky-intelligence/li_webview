@@ -46,6 +46,12 @@ public class FlutterWeb : PlatformView, MethodCallHandler {
                     println(e)
                 })
             }
+            "clearDiskCache" -> {
+                webView.clearCache(true)
+            }
+            "clearRamCache" -> {
+                webView.clearCache(false)
+            }
             else -> result.notImplemented()
         }
     }
