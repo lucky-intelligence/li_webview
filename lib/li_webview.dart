@@ -88,7 +88,7 @@ class WebController {
         return null;
       }
       case 'onMessage': {
-        this.wb.onWebAlert(this, call.arguments.toString());
+        this.wb.onWebConsole(this, call.arguments.toString());
         return null;
       }
     }
