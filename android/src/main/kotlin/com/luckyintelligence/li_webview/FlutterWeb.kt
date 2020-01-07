@@ -2,6 +2,7 @@ package com.luckyintelligence.li_webview
 
 import android.content.Context
 import android.view.View
+import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import io.flutter.plugin.common.MethodCall
@@ -60,9 +61,9 @@ public class FlutterWeb : PlatformView, MethodCallHandler {
 
     private fun getWebView(registrar : Registrar) : WebView {
         val webView : WebView = WebView(registrar.context())
-        webView.webViewClient = object: WebViewClient(){
-            override fun onPageFinished(view: WebView, url: String){
-                if(view.progress == 100){
+        webView.webChromeClient = object: WebChromeClient(){
+            override fun onProgressChanged(view: WebView, newProgress: Int){
+                if(newProgress == 100){
                     channel.invokeMethod("webLoaded", null)
                 }
             }
