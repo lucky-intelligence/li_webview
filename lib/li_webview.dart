@@ -7,15 +7,21 @@ import 'package:flutter/widgets.dart';
 
 typedef void WebViewCreatedCallback(WebController controller);
 typedef void WebViewLoadedCallback(WebController controller);
+typedef void WebViewAlertCallback(WebController controller, String message);
+typedef void WebViewConsoleCallback(WebController controller, String message);
 
 class LiWebView extends StatefulWidget {
   final WebViewCreatedCallback onWebCreated;
-  final WebViewCreatedCallback onWebLoaded;
+  final WebViewLoadedCallback onWebLoaded;
+  final WebViewAlertCallback onWebAlert;
+  final WebViewConsoleCallback onWebConsole;
 
   const LiWebView({
     Key key,
     @required this.onWebCreated,
     @required this.onWebLoaded,
+    this.onWebAlert,
+    this.onWebConsole,
     this.initialUrl,
     this.header
   });
@@ -75,6 +81,14 @@ class WebController {
     switch (call.method) {
       case 'webLoaded': {
         this.wb.onWebLoaded(this);
+        return null;
+      }
+      case 'onAlert': {
+        this.wb.onWebAlert(this, call.arguments.toString());
+        return null;
+      }
+      case 'onMessage': {
+        this.wb.onWebAlert(this, call.arguments.toString());
         return null;
       }
     }
