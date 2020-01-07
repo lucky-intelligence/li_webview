@@ -60,7 +60,13 @@ public class FlutterWeb : PlatformView, MethodCallHandler {
 
     private fun getWebView(registrar : Registrar) : WebView {
         val webView : WebView = WebView(registrar.context())
-        webView.setWebViewClient(WebViewClient())
+        webView.webViewClient = object: WebViewClient(){
+            override fun onPageFinished(view: WebView, url: String){
+                if(view.progress == 100){
+                    channel.invokeMethod("webLoaded", null)
+                }
+            }
+        }
         webView.getSettings().javaScriptEnabled = true
         return webView
     }

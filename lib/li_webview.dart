@@ -6,13 +6,16 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
 typedef void WebViewCreatedCallback(WebController controller);
+typedef void WebViewLoadedCallback(WebController controller);
 
 class LiWebView extends StatefulWidget {
   final WebViewCreatedCallback onWebCreated;
+  final WebViewCreatedCallback onWebLoaded;
 
   const LiWebView({
     Key key,
     @required this.onWebCreated,
+    @required this.onWebLoaded,
     this.initialUrl,
     this.header
   });
@@ -54,15 +57,28 @@ class _LiWebView extends State<LiWebView> {
       return;
     }
 
-    widget.onWebCreated(new WebController.init(id));
+    widget.onWebCreated(new WebController.init(id, widget));
   }
 }
 
 class WebController {
   MethodChannel _channel;
+  LiWebView wb;
 
-  WebController.init(int id) {
-    _channel =  new MethodChannel('li_webview_$id');
+  WebController.init(int id, LiWebView wb) {
+    this._channel =  new MethodChannel('li_webview_$id');
+    this._channel.setMethodCallHandler(_onMethodCall);
+    this.wb = wb;
+  }
+
+  Future<bool> _onMethodCall(MethodCall call) async {
+    switch (call.method) {
+      case 'webLoaded': {
+        this.wb.onWebLoaded(this);
+        return null;
+      }
+    }
+    throw MissingPluginException('${call.method} was invoked but has no handler');
   }
 
   Future<void> loadUrl(String url) async {
