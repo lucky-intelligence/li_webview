@@ -2,8 +2,7 @@ package com.luckyintelligence.li_webview
 
 import android.content.Context
 import android.view.View
-import android.webkit.WebView
-import android.webkit.WebViewClient
+import android.webkit.*
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
@@ -42,9 +41,17 @@ public class FlutterWeb : PlatformView, MethodCallHandler {
             }
             "evaluateJavascript" -> {
                 var js : String = call.arguments.toString()
+                println("Execute: "+js);
                 webView.evaluateJavascript(js, { e ->
                     println(e)
+                    result.success(e);
                 })
+            }
+            "clearDiskCache" -> {
+                webView.clearCache(true)
+            }
+            "clearRamCache" -> {
+                webView.clearCache(false)
             }
             else -> result.notImplemented()
         }
@@ -52,7 +59,25 @@ public class FlutterWeb : PlatformView, MethodCallHandler {
 
     private fun getWebView(registrar : Registrar) : WebView {
         val webView : WebView = WebView(registrar.context())
-        webView.setWebViewClient(WebViewClient())
+        webView.webChromeClient = object: WebChromeClient(){
+            override fun onProgressChanged(view: WebView, newProgress: Int){
+                if(newProgress == 100){
+                    channel.invokeMethod("webLoaded", null)
+                }
+            }
+
+            override fun onJsAlert(view: WebView?, url: String?, message: String?, result: JsResult?): Boolean {
+                channel.invokeMethod("onAlert", message)
+                return super.onJsAlert(view, url, message, result)
+            }
+
+            override fun onConsoleMessage(consoleMessage: ConsoleMessage?): Boolean {
+                if (consoleMessage != null) {
+                    channel.invokeMethod("onMessage", consoleMessage.message())
+                };
+                return super.onConsoleMessage(consoleMessage)
+            }
+        }
         webView.getSettings().javaScriptEnabled = true
         return webView
     }
