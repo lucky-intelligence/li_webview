@@ -6,8 +6,15 @@ class LiWebviewPlugin {
   companion object {
     @JvmStatic
     fun registerWith(registrar: Registrar) {
-      registrar.platformViewRegistry().registerViewFactory("li_webview", WebFactory(registrar))
+      println("LLegando a registerWith")
+      registrar
+              .platformViewRegistry()
+              .registerViewFactory(
+                      "li_webview", WebFactory(registrar)
+              )
+
     }
+
   }
 }
 
