@@ -1,6 +1,6 @@
 name: li_webview
-description: Yet another web view plugin
-version: 0.0.2
+description: Personalized plugin to obtain extended javascript features and support WKWebView sensor permission alertDialogs.
+version: 0.0.3
 author: Lucky Intelligence S.A.P.I. de C.V. <developer@luckyintelligence.com>
 homepage: http://luckyintelligence.com
 repository: https://github.com/lucky-intelligence/li_webview

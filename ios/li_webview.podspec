@@ -3,10 +3,10 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'li_webview'
-  s.version          = '0.0.2'
-  s.summary          = 'Yet another web view plugin'
+  s.version          = '0.0.3'
+  s.summary          = 'Personalized plugin to obtain extended javascript features and support WKWebView sensor permission alertDialogs.'
   s.description      = <<-DESC
-                          Yet another web view plugin
+                        Personalized plugin to obtain extended javascript features and support WKWebView sensor permission alertDialogs.
                         DESC
   s.homepage         = 'http://luckyintelliegence.com'
   s.license          = { :file => '../LICENSE' }

@@ -1,6 +1,6 @@
 # li_webview
 
-Yet another web view plugin
+Personalized plugin to obtain extended javascript features and support WKWebView sensor permission alertDialogs.
 
 ## Instructions
 
@@ -33,4 +33,4 @@ void onWebCreated(webController) {
 ```
 The web view is automatically going to adapt the parent properties in order to have a more natural control of it
 
-And that's it
+And that's it!
