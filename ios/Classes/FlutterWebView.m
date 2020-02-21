@@ -45,6 +45,7 @@
     _liwebView.scrollView.bounces = false;
     NSString* channelName = [NSString stringWithFormat:@"li_webview_%lld", viewId];
     _channel = [FlutterMethodChannel methodChannelWithName:channelName binaryMessenger:messenger];
+    _liwebView.UIDelegate = self;
     __weak __typeof__(self) weakSelf = self;
     [_channel setMethodCallHandler:^(FlutterMethodCall* call, FlutterResult result) {
       [weakSelf onMethodCall:call result:result];
