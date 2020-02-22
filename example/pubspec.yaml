@@ -17,9 +17,7 @@ dev_dependencies:
     sdk: flutter
 
   li_webview:
-    git:
-      url: https://github.com/lucky-intelligence/li_webview.git
-      ref: master
+    path: ../
 
 flutter:
 
